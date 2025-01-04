@@ -1,4 +1,4 @@
-package com.example.stroll
+package com.stroll.social
 
 import io.flutter.embedding.android.FlutterActivity
 
