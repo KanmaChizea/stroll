@@ -28,10 +28,10 @@ class HomeViewModel extends Cubit<HomeState> {
         emit(state.copyWith(bonfire: const AsyncValue.loading()));
       }
       final bonfire = await _bonfireRepository.getBonfires();
-      emit(state.copyWith(
-        bonfire: AsyncValue.data(bonfire),
-        hasUnseenBonfires: false,
-      ));
+      emit(state.copyWith(bonfire: AsyncValue.data(bonfire)));
+      Future.delayed(const Duration(seconds: 1), () {
+        emit(state.copyWith(hasUnseenBonfires: false));
+      });
     } catch (e) {
       emit(state.copyWith(bonfire: AsyncValue.error(e.toString())));
     }
