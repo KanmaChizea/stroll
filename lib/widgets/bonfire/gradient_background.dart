@@ -13,7 +13,7 @@ class GradientBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final bottomNavHeight = Platform.isIOS ? 49.0 : 56.0;
+    final bottomNavHeight = Platform.isIOS ? 49.0 : 30.0;
     final padding = mediaQuery.padding.top;
     final width = mediaQuery.size.width;
     final height = mediaQuery.size.height - bottomNavHeight - padding;
