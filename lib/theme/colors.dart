@@ -5,7 +5,9 @@ class AppColors {
   static const white = Color(0xFFFFFFFF);
   static const black = Color(0xFF1b181b);
 
-  static const _grey = MaterialColor(0xFF, {});
+  static const _grey = MaterialColor(0xFF6F6E7C, {
+    500: Color(0xFF6F6E7C),
+  });
 }
 
 class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
@@ -35,7 +37,7 @@ class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
 
   factory AppColorsTheme.dark() {
     return const AppColorsTheme._internal(
-      background: AppColors.black,
+      background: Color(0xFF0F1115),
       primary: Color(0xFF8B88EF),
       primaryAccent: Color(0xFFCBC9FF),
       textDefault: AppColors.black,
