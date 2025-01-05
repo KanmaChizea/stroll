@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stroll/screens/home/view.dart';
+import 'package:stroll/core/injection_container.dart' as di;
+import 'package:stroll/screens/home/view/view.dart';
 import 'package:stroll/theme/theme.dart';
 import 'package:stroll/utils/context.dart';
 
 void main() {
+  di.init();
   runApp(const MyApp());
 }
 

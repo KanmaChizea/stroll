@@ -12,7 +12,7 @@ class AppBadge extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4.5),
         decoration: BoxDecoration(
-          color: Theme.of(context).appColors.primary,
+          color: Theme.of(context).appColors.primary.shade300,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
               width: 1.4, color: Theme.of(context).appColors.background),

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stroll/screens/home/view/view.dart';
+import 'package:stroll/screens/home/view_model/view_model.dart';
 import 'package:stroll/theme/extension.dart';
 import 'package:stroll/widgets/shared/badge.dart';
 import 'package:stroll/widgets/shared/svg_icons.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final activeTab = context.watch<HomeViewModel>().state.activeTab;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: activeTab.index,
+        onTap: context.read<HomeViewModel>().updateTab,
         backgroundColor: Theme.of(context).appColors.background,
+        type: BottomNavigationBarType.fixed,
         items: [
           const BottomNavigationBarItem(
             icon: SvgIcon(name: 'card'),
@@ -43,6 +50,20 @@ class HomeView extends StatelessWidget {
             label: '',
           ),
         ],
+      ),
+      body: Builder(
+        builder: (context) {
+          switch (activeTab) {
+            case TabState.home:
+              return const CardView();
+            case TabState.bonfire:
+              return const BonfireView();
+            case TabState.chat:
+              return const ChatView();
+            case TabState.profile:
+              return const ProfileView();
+          }
+        },
       ),
     );
   }
