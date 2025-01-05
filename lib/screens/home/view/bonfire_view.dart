@@ -70,7 +70,7 @@ class _BonfireViewState extends State<BonfireView>
               controller: _controller,
               child: Stack(
                 children: [
-                  Image.asset('lib/assets/images/sunset.png'),
+                  Image.asset(bonfireData[index].videoPath),
                   GradientBackground(
                     child: SafeArea(
                       child: Column(

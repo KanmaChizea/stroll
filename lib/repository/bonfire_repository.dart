@@ -8,6 +8,7 @@ class BonfireRepository {
       'answer': 'Mine is definitely the peace in the morning.',
       'expiryTime': DateTime.now().add(const Duration(hours: 22)).toString(),
       'answerCount': 103,
+      'videoPath': 'lib/assets/images/sunset.png',
       'user': {
         'username': 'Angelina',
         'age': 24,
@@ -26,6 +27,7 @@ class BonfireRepository {
       'answer': 'Mine is definitely rice.',
       'expiryTime': DateTime.now().add(const Duration(hours: 22)).toString(),
       'answerCount': 10,
+      'videoPath': 'lib/assets/images/food.png',
       'user': {
         'username': 'Simi',
         'age': 30,
@@ -44,6 +46,7 @@ class BonfireRepository {
       'answer': 'Mine is definitely rice.',
       'expiryTime': DateTime.now().add(const Duration(hours: 22)).toString(),
       'answerCount': 28,
+      'videoPath': 'lib/assets/images/home.png',
       'user': {
         'username': 'John',
         'age': 35,

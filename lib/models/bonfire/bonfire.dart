@@ -11,6 +11,7 @@ class Bonfire extends Equatable {
   final BonfireUser user;
   final DateTime expiryTime;
   final int answerCount;
+  final String videoPath;
 
   const Bonfire({
     required this.id,
@@ -20,6 +21,7 @@ class Bonfire extends Equatable {
     required this.user,
     required this.expiryTime,
     required this.answerCount,
+    required this.videoPath,
   });
 
   @override
@@ -35,6 +37,7 @@ class Bonfire extends Equatable {
       userAnswer: userAnswer,
       options: options,
       user: user,
+      videoPath: videoPath,
       expiryTime: expiryTime ?? this.expiryTime,
       answerCount: answerCount ?? this.answerCount,
     );
@@ -45,6 +48,7 @@ class Bonfire extends Equatable {
       id: map['id'] as String,
       question: map['question'] as String,
       userAnswer: map['answer'] as String,
+      videoPath: map['videoPath'] as String,
       options: List<QuestionOptions>.from(
         (map['options'] as List).map<QuestionOptions>(
           (x) => QuestionOptions.fromMap(x as Map<String, dynamic>),
