@@ -11,7 +11,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeTab = context.watch<HomeViewModel>().state.activeTab;
+    final homeState = context.watch<HomeViewModel>().state;
+    final activeTab = homeState.activeTab;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: activeTab.index,
@@ -23,11 +24,11 @@ class HomeScreen extends StatelessWidget {
             icon: SvgIcon(name: 'card'),
             label: '',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Stack(
               children: [
-                SvgIcon(name: 'bonfire'),
-                AppBadge(),
+                const SvgIcon(name: 'bonfire'),
+                if (homeState.hasUnseenBonfires) const AppBadge(),
               ],
             ),
             label: '',

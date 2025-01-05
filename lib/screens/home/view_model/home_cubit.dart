@@ -21,11 +21,17 @@ class HomeViewModel extends Cubit<HomeState> {
 
   Future initializeBonfire() async {
     try {
+      if (state.bonfire.data != null) {
+        return;
+      }
       if (state.bonfire.error != null) {
         emit(state.copyWith(bonfire: const AsyncValue.loading()));
       }
       final bonfire = await _bonfireRepository.getBonfires();
-      emit(state.copyWith(bonfire: AsyncValue.data(bonfire)));
+      emit(state.copyWith(
+        bonfire: AsyncValue.data(bonfire),
+        hasUnseenBonfires: false,
+      ));
     } catch (e) {
       emit(state.copyWith(bonfire: AsyncValue.error(e.toString())));
     }
@@ -37,7 +43,16 @@ class HomeViewModel extends Cubit<HomeState> {
     emit(state.copyWith(selectedOptions: newOptions));
   }
 
-  void submitAnswer(String bonfireId) {
+  Future submitAnswer(String bonfireId) async {
+    if (state.isSendingResponse[bonfireId] == true ||
+        state.selectedOptions[bonfireId] == null) {
+      return;
+    }
+    emit(state.copyWith(
+      isSendingResponse: {...state.isSendingResponse, bonfireId: true},
+    ));
+    await _bonfireRepository.submitResponse(
+        bonfireId, state.selectedOptions[bonfireId]!);
     final newOptions = {...state.selectedOptions};
     final newBonfireList = [...state.bonfire.data!];
     newOptions.remove(bonfireId);
@@ -45,6 +60,7 @@ class HomeViewModel extends Cubit<HomeState> {
     emit(state.copyWith(
       bonfire: AsyncValue.data(newBonfireList),
       selectedOptions: newOptions,
+      isSendingResponse: {...state.isSendingResponse, bonfireId: false},
     ));
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class GradientBackground extends StatelessWidget {
@@ -10,13 +12,16 @@ class GradientBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
+    final mediaQuery = MediaQuery.of(context);
+    final bottomNavHeight = Platform.isIOS ? 49.0 : 56.0;
+    final padding = mediaQuery.padding.top;
+    final width = mediaQuery.size.width;
+    final height = mediaQuery.size.height - bottomNavHeight - padding;
     return Stack(
       children: [
         Container(
-          width: size.width,
-          height: size.height - 100,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -31,8 +36,8 @@ class GradientBackground extends StatelessWidget {
           ),
         ),
         Container(
-          width: size.width,
-          height: size.height - 100,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -49,8 +54,8 @@ class GradientBackground extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: size.width,
-          height: size.height - 100,
+          width: width,
+          height: height,
           child: child,
         ),
       ],

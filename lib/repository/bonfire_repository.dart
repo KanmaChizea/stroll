@@ -19,6 +19,24 @@ class BonfireRepository {
         {'id': 'OptionC', 'text': 'Wind-down time after dinners'},
         {'id': 'OptionD', 'text': 'The serenity past midnight'},
       ],
+    },
+    {
+      'id': '456',
+      'question': 'What is your favorite food?',
+      'answer': 'Mine is definitely rice.',
+      'expiryTime': DateTime.now().add(const Duration(hours: 22)).toString(),
+      'answerCount': 10,
+      'user': {
+        'username': 'Simi',
+        'age': 30,
+        'imagePath': 'lib/assets/images/avatar1.png'
+      },
+      'options': [
+        {'id': 'OptionA', 'text': 'Rice'},
+        {'id': 'OptionB', 'text': 'Pasta'},
+        {'id': 'OptionC', 'text': 'Noodles'},
+        {'id': 'OptionD', 'text': 'Water'},
+      ],
     }
   ];
 
@@ -28,5 +46,10 @@ class BonfireRepository {
     return _mockedGetBonfireResponse
         .map((item) => Bonfire.fromMap(item))
         .toList();
+  }
+
+  Future submitResponse(String bonfireId, String optionId) async {
+    // Simulate network request
+    await Future.delayed(const Duration(seconds: 3));
   }
 }
