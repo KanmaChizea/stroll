@@ -29,7 +29,25 @@ class BonfireRepository {
       'user': {
         'username': 'Simi',
         'age': 30,
-        'imagePath': 'lib/assets/images/avatar1.png'
+        'imagePath': 'lib/assets/images/avatar2.png'
+      },
+      'options': [
+        {'id': 'OptionA', 'text': 'Rice'},
+        {'id': 'OptionB', 'text': 'Pasta'},
+        {'id': 'OptionC', 'text': 'Noodles'},
+        {'id': 'OptionD', 'text': 'Water'},
+      ],
+    },
+    {
+      'id': '789',
+      'question': 'What is your favorite food?',
+      'answer': 'Mine is definitely rice.',
+      'expiryTime': DateTime.now().add(const Duration(hours: 22)).toString(),
+      'answerCount': 28,
+      'user': {
+        'username': 'John',
+        'age': 35,
+        'imagePath': 'lib/assets/images/avatar3.png'
       },
       'options': [
         {'id': 'OptionA', 'text': 'Rice'},

@@ -43,7 +43,8 @@ class HomeViewModel extends Cubit<HomeState> {
     emit(state.copyWith(selectedOptions: newOptions));
   }
 
-  Future submitAnswer(String bonfireId) async {
+  Future submitAnswer(
+      String bonfireId, Future Function() dismissTrigger) async {
     if (state.isSendingResponse[bonfireId] == true ||
         state.selectedOptions[bonfireId] == null) {
       return;
@@ -53,6 +54,7 @@ class HomeViewModel extends Cubit<HomeState> {
     ));
     await _bonfireRepository.submitResponse(
         bonfireId, state.selectedOptions[bonfireId]!);
+    await dismissTrigger();
     final newOptions = {...state.selectedOptions};
     final newBonfireList = [...state.bonfire.data!];
     newOptions.remove(bonfireId);

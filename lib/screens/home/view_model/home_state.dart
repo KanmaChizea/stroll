@@ -10,6 +10,7 @@ class HomeState extends Equatable {
   final Map<String, String> selectedOptions;
   final Map<String, bool> isSendingResponse;
   final bool hasUnseenBonfires;
+  final int currentBonfirePageIndex;
 
   const HomeState({
     required this.activeTab,
@@ -17,6 +18,7 @@ class HomeState extends Equatable {
     this.selectedOptions = const {},
     this.isSendingResponse = const {},
     this.hasUnseenBonfires = true,
+    this.currentBonfirePageIndex = 0,
   });
 
   factory HomeState.initial() {
@@ -29,7 +31,8 @@ class HomeState extends Equatable {
         bonfire,
         selectedOptions,
         isSendingResponse,
-        hasUnseenBonfires
+        hasUnseenBonfires,
+        currentBonfirePageIndex,
       ];
 
   HomeState copyWith({
@@ -38,6 +41,7 @@ class HomeState extends Equatable {
     Map<String, String>? selectedOptions,
     bool? hasUnseenBonfires,
     Map<String, bool>? isSendingResponse,
+    int? currentBonfirePageIndex,
   }) {
     return HomeState(
       activeTab: activeTab ?? this.activeTab,
@@ -45,6 +49,8 @@ class HomeState extends Equatable {
       selectedOptions: selectedOptions ?? this.selectedOptions,
       hasUnseenBonfires: hasUnseenBonfires ?? this.hasUnseenBonfires,
       isSendingResponse: isSendingResponse ?? this.isSendingResponse,
+      currentBonfirePageIndex:
+          currentBonfirePageIndex ?? this.currentBonfirePageIndex,
     );
   }
 }
